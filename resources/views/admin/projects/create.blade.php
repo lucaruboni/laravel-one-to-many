@@ -26,6 +26,15 @@
         <label for="content" class="form-label">Content</label>
         <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3"></textarea>
     </div>
+    <div class="mb-3">
+        <label for="type_id" class="form-label">types</label>
+        <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+            <option value="">Select a type</option>
+            @foreach ($types as $type)
+            <option value="{{$category->id}}" {{ $type->id  == old('type_id', '') ? 'selected' : '' }}>{{$type->name}}</option>
+            @endforeach
+        </select>
+    </div>
 
 
     <button type="submit" class="btn btn-dark">Save</button>
