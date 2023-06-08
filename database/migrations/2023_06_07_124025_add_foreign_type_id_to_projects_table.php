@@ -18,7 +18,7 @@ return new class extends Migration
              $table->unsignedBigInteger('type_id')->nullable()->after('id');
 
               // aggiungo la foreign key che collega le tabelle tra di loro
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
         });
     }
 
@@ -31,7 +31,7 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
                 // droppo la foreign key
-                $table->dropForeign('posts_type_id_foreign');
+                $table->dropForeign('projects_type_id_foreign');
                 // droppo la colonna
                 $table->dropColumn('type_id');
         });
